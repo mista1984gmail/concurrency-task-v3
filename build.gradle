@@ -1,17 +1,30 @@
 plugins {
     id 'java'
+    id "io.freefair.lombok" version "6.5.1"
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
+
+ext {
+    projectLombokVersion = "1.18.26"
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    //Testing
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    //Lombok
+    implementation "org.projectlombok:lombok:${projectLombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${projectLombokVersion}"
+
+    //Logging
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.20.0'
 }
 
 test {
